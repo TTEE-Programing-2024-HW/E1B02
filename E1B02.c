@@ -59,13 +59,13 @@ int main()
 				scanf(" %c",&w);
 			}
 			num=w-'a'+1;
-			for(i=1;i<=num;i++)
+			for(i=0;i<num;i++)
 			{
-				for(k=num;k>=i-1;k--)
+				for(k=num;k>i+1;k--)
 					printf(" ");
-				for(j=1;j<=i;j++)
-					printf("%c",w);
-				w--;
+				for(j=0;j<=i;j++)
+					printf("%c",w+j);
+					w--;
 				printf("\n");
 			}
 			break;
