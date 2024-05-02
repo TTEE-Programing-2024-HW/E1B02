@@ -44,33 +44,37 @@ int main()
 	f();
 	char option,w;
 	int i,j;
-	printf("輸入你的選擇:\n");
-	scanf("%c",&option);
+	printf("請輸入你的選擇:\n");
+	scanf(" %c", &option);
 	switch(option)
 	{
-		case'a':
-		case'A':
+		case 'a':
+			system("CLS");
 			printf("輸入a~n的字元\n");
-			scanf("%c",&w);
-			while(w>n)
+			scanf(" %c",&w);
+			while(w>'n'||w<'a')
 			{
-				printf("輸入錯誤，請重新輸入\a\n");
-			} 
+				printf("輸入錯誤");
+				printf("重新輸入a~n的字元\n");
+				scanf(" %c",&w);
+			}
+			
 			for(i=1;i<=w;i++)
 			{
 				for(j=1;j<=i;j++)
 					printf("%c",w);
 				printf("\n");
 			}
-				
-		case'b':
-		case'B':
-			
-		case'c':
-		case'C':
 			break;
 			
+		case'b':
+			
+			
+		case'c':
+		
+			break;
 	}
+	
     return 0;
 }
 void f(void)
