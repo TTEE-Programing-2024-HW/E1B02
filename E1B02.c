@@ -43,7 +43,7 @@ int main()
 	printf("    結束---------C or c\n");
 	f();
 	char option,w;
-	int i,j;
+	int i,j,k,num;
 	printf("請輸入你的選擇:\n");
 	scanf(" %c", &option);
 	switch(option)
@@ -58,9 +58,11 @@ int main()
 				printf("重新輸入a~n的字元\n");
 				scanf(" %c",&w);
 			}
-			
-			for(i=1;i<=w;i++)
+			num=w-'a'+1;
+			for(i=1;i<=num;i++)
 			{
+				for(k=num;k>=i-1;k--)
+					printf(" ");
 				for(j=1;j<=i;j++)
 					printf("%c",w);
 				printf("\n");
