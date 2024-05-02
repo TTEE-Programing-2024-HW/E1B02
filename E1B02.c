@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 void f(void);
+void menu(void);
 int main() 
 { 
 	printf("EEEE  1  BBB     000      2     H  H  W   W   W   2    \n");
@@ -37,6 +38,9 @@ int main()
 		}
 	}while(pass!=2024);
 	system("CLS");
+	while(1)
+{
+	
 	f();
 	printf("    直角三角形---A or a\n");
 	printf("    99乘法表-----B or b\n");
@@ -49,6 +53,7 @@ int main()
 	switch(option)
 	{
 		case 'a':
+		case 'A':
 			system("CLS");
 			printf("輸入a~n的字元\n");
 			scanf(" %c",&w);
@@ -68,22 +73,27 @@ int main()
 					w--;
 				printf("\n");
 			}
-			break;
-			
+			printf("按任意鍵返回主選單...\n");
+    		getch();  
+    		system("CLS");
+    		break;
 		case'b':
+		case'B':
 			
 			
 		case'c':
+		case'C':
 		
 			break;
 	}
-	
+}
     return 0;
 }
 void f(void)
 {
 	printf("==============================\n");
 }
+
 
 
 
