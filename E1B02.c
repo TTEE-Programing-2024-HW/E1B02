@@ -42,7 +42,35 @@ int main()
 	printf("    99乘法表-----B or b\n");
 	printf("    結束---------C or c\n");
 	f();
-
+	char option,w;
+	int i,j;
+	printf("輸入你的選擇:\n");
+	scanf("%c",&option);
+	switch(option)
+	{
+		case'a':
+		case'A':
+			printf("輸入a~n的字元\n");
+			scanf("%c",&w);
+			while(w>n)
+			{
+				printf("輸入錯誤，請重新輸入\a\n");
+			} 
+			for(i=1;i<=w;i++)
+			{
+				for(j=1;j<=i;j++)
+					printf("%c",w);
+				printf("\n");
+			}
+				
+		case'b':
+		case'B':
+			
+		case'c':
+		case'C':
+			break;
+			
+	}
     return 0;
 }
 void f(void)
