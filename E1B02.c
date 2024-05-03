@@ -37,6 +37,7 @@ int main()
 			break;
 		}
 	}while(pass!=2024);
+	return 0;
 	system("CLS");
 	while(1)
 	{
@@ -104,13 +105,13 @@ int main()
 					printf("¿ù»~¡A­«·s¿é¤J(y or n)\n");
 					scanf(" %c",&YorN);
 				}	
-				if(YorN=='n'||YorN=='N')
-					return 0;
 				if(YorN=='y'||YorN=='Y')
 					break;
+				if(YorN=='n'||YorN=='N')
+					return 0;
 			}
 	}
-    return 0;
+    
 }
 void f(void)
 {
