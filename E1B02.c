@@ -45,7 +45,7 @@ int main()
 		printf("    99乘法表-----B or b\n");
 		printf("    結束---------C or c\n");
 		f();
-		char option,w;
+		char option,w,YorN;
 		int i,j,k,num,n;
 		printf("請輸入你的選擇:\n");
 		scanf(" %c", &option);
@@ -91,12 +91,23 @@ int main()
 						printf("%dx%d=%3d ",i,j,i*j);
 					printf("\n");
 				}
+				printf("按任意鍵返回主選單...\n");
+    			getch();  
+    			system("CLS");
 					break;
-			
 			case'c':
 			case'C':
-		
-				break;
+				printf("Continue?(y or n)\n");
+				scanf(" %c",&YorN);
+				while(YorN!='n'||YorN!='N'||YorN!='Y'||YorN!='y')
+				{
+					printf("錯誤，重新輸入(y or n)\n");
+					scanf(" %c",&YorN);
+				}	
+				if(YorN=='n'||YorN=='N')
+					return 0;
+				if(YorN=='y'||YorN=='Y')
+					break;
 			}
 	}
     return 0;
