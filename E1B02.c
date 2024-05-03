@@ -98,8 +98,8 @@ int main()
 			case'c':
 			case'C':
 				printf("Continue?(y or n)\n");
-				scanf(" %c",&YorN);
-				while(YorN!='n'||YorN!='N'||YorN!='Y'||YorN!='y')
+				scanf(" %c", &YorN);
+				while(YorN!='n'&& YorN!='N' && YorN!='Y' && YorN!='y')
 				{
 					printf("¿ù»~¡A­«·s¿é¤J(y or n)\n");
 					scanf(" %c",&YorN);
