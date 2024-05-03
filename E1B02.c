@@ -39,54 +39,66 @@ int main()
 	}while(pass!=2024);
 	system("CLS");
 	while(1)
-{
-	
-	f();
-	printf("    直角三角形---A or a\n");
-	printf("    99乘法表-----B or b\n");
-	printf("    結束---------C or c\n");
-	f();
-	char option,w;
-	int i,j,k,num;
-	printf("請輸入你的選擇:\n");
-	scanf(" %c", &option);
-	switch(option)
 	{
-		case 'a':
-		case 'A':
-			system("CLS");
-			printf("輸入a~n的字元\n");
-			scanf(" %c",&w);
-			while(w>'n'||w<'a')
-			{
-				printf("輸入錯誤");
-				printf("重新輸入a~n的字元\n");
+		f();
+		printf("    直角三角形---A or a\n");
+		printf("    99乘法表-----B or b\n");
+		printf("    結束---------C or c\n");
+		f();
+		char option,w;
+		int i,j,k,num,n;
+		printf("請輸入你的選擇:\n");
+		scanf(" %c", &option);
+		switch(option)
+		{
+			case 'a':
+			case 'A':
+				system("CLS");
+				printf("輸入a~n的字元\n");
 				scanf(" %c",&w);
-			}
-			num=w-'a'+1;
-			for(i=0;i<num;i++)
-			{
-				for(k=num;k>i+1;k--)
-					printf(" ");
-				for(j=0;j<=i;j++)
-					printf("%c",w+j);
-					w--;
-				printf("\n");
-			}
-			printf("按任意鍵返回主選單...\n");
-    		getch();  
-    		system("CLS");
-    		break;
-		case'b':
-		case'B':
+				while(w>'n'||w<'a')
+				{
+					printf("輸入錯誤");
+					printf("重新輸入a~n的字元\n");
+					scanf(" %c",&w);
+				}
+				num=w-'a'+1;
+				for(i=0;i<num;i++)
+				{
+					for(k=num;k>i+1;k--)
+						printf(" ");
+					for(j=0;j<=i;j++)
+						printf("%c",w+j);
+						w--;
+					printf("\n");
+				}
+				printf("按任意鍵返回主選單...\n");
+    			getch();  
+    			system("CLS");
+    			break;
+			case'b':
+			case'B':
+				printf("輸入1~9的整數:\n");
+				scanf("%d",&n);
+				while(n<1||n>9)
+				{
+					printf("輸入錯誤，請重新輸入:\n");
+					scanf("%d",&n);
+				}
+				for(i=1;i<=n;i++)
+				{
+					for(j=1;j<=n;j++)
+						printf("%dx%d=%3d ",i,j,i*j);
+					printf("\n");
+				}
+					break;
 			
-			
-		case'c':
-		case'C':
+			case'c':
+			case'C':
 		
-			break;
+				break;
+			}
 	}
-}
     return 0;
 }
 void f(void)
