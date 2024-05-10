@@ -24,7 +24,20 @@ int main()
 	printf("Password hint 3\n");
 	printf("hint 2 is related to Chinese\n");
 	s();
-	return 0;
+	int pass,n=0;
+	for(n=1;n<=3;n++)
+	{
+		printf("Enter password,please\n");
+		scanf("%d",&pass);
+		if(pass==2024)
+		{
+			printf("Correct\n");
+			break;
+		}
+		else
+		printf("Error\n");
+	}
+	system("CLS");
 	
 }
 void s(void)
