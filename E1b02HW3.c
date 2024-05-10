@@ -35,9 +35,19 @@ int main()
 			break;
 		}
 		else
-		printf("Error\n");
+		{
+			printf("Error\n");
+		}
 	}
+	if(n>3) return 0;
 	system("CLS");
+	printf("--------------[ BookingSystem ]--------------\n");
+	printf("|       a.Available seats                   |\n");
+	printf("|       b.Computer randomly selects a posit |\n");
+	printf("|       c.Choose your own position          |\n");
+	printf("|       d.exist                             |\n");
+	printf("--------------[ BookingSystem ]--------------\n");
+	
 	
 }
 void s(void)
