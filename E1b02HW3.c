@@ -24,7 +24,9 @@ int main()
 	printf("Password hint 3\n");
 	printf("hint 2 is related to Chinese\n");
 	s();
-	int pass,n=0;
+	int pass,n=0,i,j;
+	char seat[9][9]={0};
+	char options;
 	for(n=1;n<=3;n++)
 	{
 		printf("Enter password,please\n");
@@ -47,6 +49,26 @@ int main()
 	printf("|       c.Choose your own position          |\n");
 	printf("|       d.exist                             |\n");
 	printf("--------------[ BookingSystem ]--------------\n");
+	printf("Please enter 'a','b','c'or'd'.\n");
+	scanf(" %c",&options);
+	switch (options)
+	{
+		case 'a':
+		for (i=0;i<9;i++)
+			printf("  %d",i+1);
+        	for (j=0;j<9;j++)
+        	{	
+				printf("%d\n",j);
+				seat[i][j] = '-';
+            	printf("%c",seat[i][j]);
+            }
+       
+        break;
+		case 'b':
+		case 'c':
+		case 'd':
+			break;
+	}
 	
 	
 }
