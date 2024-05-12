@@ -54,15 +54,18 @@ int main()
 	switch (options)
 	{
 		case 'a':
-		for (i=0;i<9;i++)
-			printf("  %d",i+1);
-        	for (j=0;j<9;j++)
-        	{	
-				printf("%d\n",j);
-				seat[i][j] = '-';
-            	printf("%c",seat[i][j]);
-            }
-       
+			for (i=0;i<9;i++) 
+			{
+   			 	for (j=0;j<9;j++) 
+				{seat[i][j]='-';}
+			}
+			for (i=0;i<9;i++)
+			{
+				printf("\n");
+				printf("%d",i+1);
+   				for (j=0;j<9;j++) 
+        		{printf("%c ",seat[i][j]);}
+    		}
         break;
 		case 'b':
 		case 'c':
