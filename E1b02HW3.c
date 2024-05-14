@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h> 
 void s(void);
 int main()
 {
@@ -25,6 +26,7 @@ int main()
 	printf("hint 2 is related to Chinese\n");
 	s();
 	int pass,n=0,i,j;
+	int count=0,row=0,col=0;
 	char seat[9][9]={0};
 	char options;
 	for(n=1;n<=3;n++)
@@ -63,6 +65,17 @@ int main()
 			{
         		printf(" %d",j+1);
         	}
+        	srand(time(NULL)); //初始化隨機數生成器
+    		while (count < 10) //當小於10時進入迴圈，因為要隨機生成10個位置 
+			{
+        		row=rand() % 9;//隨機生成0~8的數字，%9餘數0~8 
+         		col=rand() % 9;//隨機生成0~8的數字，%9餘數0~8 
+				if (seat[row][col]=='-') 
+				{
+					seat[row][col] = '*';
+            		count++;
+        		}
+    		}
         	printf("\n");
 			for (i=9;i>0;i--)
 			{
