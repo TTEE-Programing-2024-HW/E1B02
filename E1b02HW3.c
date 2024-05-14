@@ -26,7 +26,7 @@ int main()
 	printf("hint 2 is related to Chinese\n");
 	s();
 	int pass,n=0,i,j;
-	int count=0,row=0,col=0;
+	int count,row=0,col=0;
 	char seat[9][9]={0};
 	char options;
 	for(n=1;n<=3;n++)
@@ -45,6 +45,7 @@ int main()
 	}
 	if(n>3) return 0;
 	system("CLS");
+	while(1){
 	printf("--------------[ BookingSystem ]--------------\n");
 	printf("|       a.Available seats                   |\n");
 	printf("|       b.Computer randomly selects a posit |\n");
@@ -66,6 +67,7 @@ int main()
         		printf(" %d",j+1);
         	}
         	srand(time(NULL)); //初始化隨機數生成器
+        	count=0;
     		while (count < 10) //當小於10時進入迴圈，因為要隨機生成10個位置 
 			{
         		row=rand() % 9;//隨機生成0~8的數字，%9餘數0~8 
@@ -84,13 +86,15 @@ int main()
         		{printf("%c ",seat[i][j]);}
         		printf("\n");
     		}
+    		system("pause");
+    		system("CLS");
         break;
 		case 'b':
 		case 'c':
 		case 'd':
 			break;
 	}
-	
+}
 	
 }
 void s(void)
