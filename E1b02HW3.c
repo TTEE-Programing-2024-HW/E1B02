@@ -2,6 +2,9 @@
 #include<stdlib.h>
 #include<time.h> 
 void s(void);
+void ran(void);
+void table(void);
+char seat[9][9]={0};
 int main()
 {
 	printf("H   H    W       W    3 3   \n");
@@ -25,9 +28,9 @@ int main()
 	printf("Password hint 3\n");
 	printf("hint 2 is related to Chinese\n");
 	s();
-	int pass,n=0,i,j;
+	int pass,n=0,i,j,seats=0;
 	int count,row=0,col=0;
-	char seat[9][9]={0};
+	
 	char options;
 	for(n=1;n<=3;n++)
 	{
@@ -57,39 +60,30 @@ int main()
 	switch (options)
 	{
 		case 'a':
-			for (i=8;i>0;i--) 
-			{
-   			 	for (j=0;j<9;j++) 
-				{seat[i][j]='-';}
-			}
-			for (j=0;j<9;j++) 
-			{
-        		printf(" %d",j+1);
-        	}
-        	srand(time(NULL)); //初始化隨機數生成器
-        	count=0;
-    		while (count < 10) //當小於10時進入迴圈，因為要隨機生成10個位置 
-			{
-        		row=rand() % 9;//隨機生成0~8的數字，%9餘數0~8 
-         		col=rand() % 9;//隨機生成0~8的數字，%9餘數0~8 
-				if (seat[row][col]=='-') 
-				{
-					seat[row][col] = '*';
-            		count++;
-        		}
-    		}
-        	printf("\n");
-			for (i=8;i>0;i--)
-			{
-				printf("%d",i+1);
-   				for (j=0;j<9;j++) 
-        		{printf("%c ",seat[i][j]);}
-        		printf("\n");
-    		}
+    		ran();
+    		table();
     		system("pause");
     		system("CLS");
         break;
 		case 'b':
+			printf("How many seats do you need?(1~4)");
+			scanf("%d",&seats);
+			int s=seats-1;
+			table();
+			if(seats<=3)
+			{
+				while (count < seat) 
+			{
+        		row=rand() % s; 
+         		col=rand() % s; 
+				if (seat[row][col]=='-'||seat[row][col]=='*') 
+				{
+					seat[row][col] = '@';
+            		count++;
+        		}
+    		}
+			}
+			
 		case 'c':
 		case 'd':
 			break;
@@ -100,4 +94,44 @@ int main()
 void s(void)
 {
 	printf("------------------------------------------\n");
+}
+void ran(void)
+{
+	int i,j;
+	int count,row=0,col=0;
+	for (i=8;i>0;i--) 
+	{
+   		for (j=0;j<9;j++) 
+		{seat[i][j]='-';}
+	}
+		for (j=0;j<9;j++) 
+		{
+        	printf(" %d",j+1);
+        }
+        srand(time(NULL)); //初始化隨機數生成器
+        count=0;
+    	while (count < 10) //當小於10時進入迴圈，因為要隨機生成10個位置 
+		{
+        	row=rand() % 9;//隨機生成0~8的數字，%9餘數0~8 
+         	col=rand() % 9;//隨機生成0~8的數字，%9餘數0~8 
+			if (seat[row][col]=='-') 
+			{
+				seat[row][col] = '*';
+            	count++;
+        	}
+    	}
+        	printf("\n");
+}
+void table(void)
+{
+	int i,j;
+	for (i=8;i>0;i--)
+	{
+		printf("%d",i+1);
+   		for (j=0;j<9;j++) 
+        {
+        	printf("%c ",seat[i][j]);
+		}
+        		printf("\n");
+    }
 }
