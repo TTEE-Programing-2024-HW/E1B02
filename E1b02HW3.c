@@ -31,7 +31,7 @@ int main()
 	s();
 	int pass,n=0,j,i,seats=0;
 	int count,row=0,col=0;
-	char ans;
+
 	char options;
 	for(n=1;n<=3;n++)
 	{
@@ -62,7 +62,7 @@ int main()
 	switch (options)
 	{
 		case 'a':
-    	//	ran();
+    		//ran();
     		table();
     		system("pause");
     		system("CLS");
@@ -71,18 +71,11 @@ int main()
 			printf("How many seats do you need?(1~4)");
 			scanf("%d",&seats);
 			bb(seats);
-			table(); // 再次顯示座位表
-			printf("Are you satisfied with the seating arrangement?(y/n)");
-			scanf(" %c",&ans);
-			if(ans=='y'||'Y')
 			system("CLS");
-			else
-			system("CLS");
-            //system("pause");
-            
-			break;
-			
+			break;	
 		case 'c':
+			table();
+			break;
 		case 'd':
 			break;
 	}
@@ -135,6 +128,7 @@ void table(void)
 void bb(int seats) 
 {
     int n=0,row=0,col=0,i=0,j=0;
+    char ans;
     srand(time(NULL));
     if(seats==4)
     {
@@ -185,6 +179,20 @@ void bb(int seats)
             	break;
 			}
         }
+        table();
+        printf("Are you satisfied with the seating arrangement?(y/n)");
+		scanf(" %c",&ans);
+		if(ans=='y'||'Y')
+		for (i=0;i<10;++i)
+            for (j=0;j<10;++j)
+            	if (seat[i][j]=='@')
+                seat[i][j]='*'; 
+		else
+		for (i=0;i<10;++i)
+            for(j=0;j<10;++j)
+                if (seat[i][j]=='@')
+                seat[i][j]='-';
+		
     	
 	}
     
