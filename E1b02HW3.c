@@ -4,6 +4,7 @@
 void s(void);
 void ran(void);
 void table(void);
+void bb(int);
 char seat[9][9]={0};
 int main()
 {
@@ -68,21 +69,11 @@ int main()
 		case 'b':
 			printf("How many seats do you need?(1~4)");
 			scanf("%d",&seats);
-			int s=seats-1;
-			table();
-			if(seats<=3)
-			{
-				while (count < seat) 
-			{
-        		row=rand() % s; 
-         		col=rand() % s; 
-				if (seat[row][col]=='-'||seat[row][col]=='*') 
-				{
-					seat[row][col] = '@';
-            		count++;
-        		}
-    		}
-			}
+			bb(seats);
+			table(); // 再次顯示座位表
+            system("pause");
+            system("CLS");
+			break;
 			
 		case 'c':
 		case 'd':
@@ -133,5 +124,19 @@ void table(void)
         	printf("%c ",seat[i][j]);
 		}
         		printf("\n");
+    }
+}
+void bb(int seats) 
+{
+    int n=0,row=0,col=0;
+    while(n<seats) 
+    {
+        row=rand()%9;
+        col=rand()%9;
+        if (seat[row][col] == '-') 
+        {
+            seat[row][col] = '@';
+            n++;
+        }
     }
 }
