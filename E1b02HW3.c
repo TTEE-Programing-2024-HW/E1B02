@@ -102,8 +102,8 @@ void ran(void)
         count=0;
     	while (count < 10) //讽10秈癹伴璶繦诀ネΘ10竚 
 		{
-        	row=rand() % 10;//繦诀ネΘ0~8计%9緇计0~8 
-         	col=rand() % 10;//繦诀ネΘ0~8计%9緇计0~8 
+        	row=rand() % 10;//繦诀ネΘ0~9计%10緇计0~9 
+         	col=rand() % 10;//繦诀ネΘ0~9计%10緇计0~9 
 			if (seat[row][col]=='-') 
 			{
 				seat[row][col] = '*';
@@ -153,6 +153,33 @@ void bb(int seats)
             }
         }
     }
+    else if(seats<=3&&seats>0)
+    {
+    	while (1)
+        {
+            row=rand() % 10; 
+            col=rand() % 10; 
+            if (seats==1&&seat[row][col]=='-')
+            {
+				seat[row][col] = '@';	
+                break;
+            }
+            else if(seats==2&&seat[row][col]=='-'&&seat[row][col+1]=='-')
+            {
+            	seat[row][col] = '@';
+            	seat[row][col+1] = '@';
+            	break;
+			}
+			else if(col+3<10&&seats==3&&seat[row][col]=='-'&&seat[row][col+1]=='-'&&seat[row][col+2]=='-')
+			{
+				seat[row][col] = '@';
+            	seat[row][col+1] = '@';
+            	seat[row][col+2] = '@';
+            	break;
+			}
+        }
+    	
+	}
     
 }
 
