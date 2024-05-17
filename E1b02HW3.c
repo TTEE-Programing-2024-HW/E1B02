@@ -49,6 +49,7 @@ int main()
 	}
 	if(n>3) return 0;
 	system("CLS");
+	ran();
 	while(1){
 	printf("--------------[ BookingSystem ]--------------\n");
 	printf("|       a.Available seats                   |\n");
@@ -58,7 +59,7 @@ int main()
 	printf("--------------[ BookingSystem ]--------------\n");
 	printf("Please enter 'a','b','c'or'd'.\n");
 	scanf(" %c",&options);
-	ran();
+	
 	switch (options)
 	{
 		case 'a':
@@ -71,10 +72,10 @@ int main()
 			printf("How many seats do you need?(1~4)");
 			scanf("%d",&seats);
 			bb(seats);
-			system("CLS");
+		//	system("CLS");
 			break;	
 		case 'c':
-			table();
+			
 			break;
 		case 'd':
 			break;
@@ -182,17 +183,22 @@ void bb(int seats)
         table();
         printf("Are you satisfied with the seating arrangement?(y/n)");
 		scanf(" %c",&ans);
-		if(ans=='y'||'Y')
-		for (i=0;i<10;++i)
-            for (j=0;j<10;++j)
-            	if (seat[i][j]=='@')
-                seat[i][j]='*'; 
+		if(ans=='y'||ans=='Y')
+		{	
+			for (i=9;i<0;i--)
+            	for (j=0;j<9;j++)
+            		if (seat[i][j]=='@')
+                	{seat[i][j]='*';} 
+        } 
 		else
-		for (i=0;i<10;++i)
-            for(j=0;j<10;++j)
-                if (seat[i][j]=='@')
-                seat[i][j]='-';
-		
+		{
+			for (i=9;i<0;i--)
+            	for(j=0;j<9;j++)
+                	if (seat[i][j]=='@')
+                	{seat[i][j]='-';} 
+        } 
+		table();
+	//	system("CLS");
     	
 	}
     
