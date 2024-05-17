@@ -29,7 +29,7 @@ int main()
 	printf("Password hint 3\n");
 	printf("hint 2 is related to Chinese\n");
 	s();
-	int pass,n=0,i,j,seats=0;
+	int pass,n=0,j,i,seats=0;
 	int count,row=0,col=0;
 	
 	char options;
@@ -88,8 +88,7 @@ void s(void)
 }
 void ran(void)
 {
-	int i,j;
-	int count,row=0,col=0;
+	int count,row=0,col=0,i=0,j=0;
 	for (i=9;i>0;i--) 
 	{
    		for (j=0;j<9;j++) 
@@ -115,7 +114,7 @@ void ran(void)
 }
 void table(void)
 {
-	int i,j;
+	int i=0,j=0;
 	for (i=9;i>0;i--)
 	{
 		printf("%d",i);
@@ -128,18 +127,32 @@ void table(void)
 }
 void bb(int seats) 
 {
-    int n=0,row=0,col=0;
-    if(seats<=3)
+    int n=0,row=0,col=0,i=0,j=0;
+    srand(time(NULL));
+    if(seats==4)
     {
-	while(n<seats) 
-    {
-        row=rand()%9;
-        col=rand()%9;
-        if (seat[row][col] == '-') 
+        while (1)
         {
-            seat[row][col] = '@';
-            n++;
+            row=rand() % 9; 
+            col=rand() % 9; 
+            if (seat[row][col]=='-'&&seat[row][col+1]=='-'&&seat[row][col+2]=='-'&&seat[row][col+3]=='-')
+            {
+                seat[row][col]='@';
+                seat[row][col+1]='@';
+                seat[row][col+2]='@';
+                seat[row][col+3]='@';
+                break;
+            }
+            else if (seat[row][col]=='-'&&seat[row+1][col]=='-'&&seat[row][col+ 1]=='-'&&seat[row+1][col+1]=='-')
+            {
+                seat[row][col]='@';
+                seat[row+1][col]='@';
+                seat[row][col+1]='@';
+                seat[row+1][col+1]='@';
+                break;
+            }
         }
     }
+    
 }
-}
+
