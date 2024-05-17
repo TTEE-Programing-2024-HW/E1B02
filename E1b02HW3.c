@@ -72,7 +72,7 @@ int main()
 			printf("How many seats do you need?(1~4)");
 			scanf("%d",&seats);
 			bb(seats);
-		//	system("CLS");
+			system("CLS");
 			break;	
 		case 'c':
 			
@@ -116,6 +116,11 @@ void ran(void)
 void table(void)
 {
 	int i=0,j=0;
+	for (j=0;j<9;j++) 
+	{
+        printf(" %d",j+1);
+    }
+    printf("\n");
 	for (i=9;i>0;i--)
 	{
 		printf("%d",i);
@@ -180,27 +185,24 @@ void bb(int seats)
             	break;
 			}
         }
-        table();
-        printf("Are you satisfied with the seating arrangement?(y/n)");
-		scanf(" %c",&ans);
-		if(ans=='y'||ans=='Y')
-		{	
-			for (i=9;i<0;i--)
-            	for (j=0;j<9;j++)
-            		if (seat[i][j]=='@')
-                	{seat[i][j]='*';} 
-        } 
-		else
-		{
-			for (i=9;i<0;i--)
-            	for(j=0;j<9;j++)
-                	if (seat[i][j]=='@')
-                	{seat[i][j]='-';} 
-        } 
-		table();
-	//	system("CLS");
-    	
-	}
-    
+        	
+	} 
+	table();
+    printf("Are you satisfied with the seating arrangement?(y/n)");
+	scanf(" %c",&ans);
+	if(ans=='y'||ans=='Y')
+	{	
+		for (i=9;i>=0;i--)
+           	for (j=0;j<9;j++)
+            	if (seat[i][j]=='@')
+            	{seat[i][j]='*';} 
+    } 
+	else
+	{
+		for (i=9;i>=0;i--)
+           	for(j=0;j<9;j++)
+                if (seat[i][j]=='@')
+                {seat[i][j]='-';} 
+    } 
 }
 
