@@ -90,7 +90,7 @@ void ran(void)
 {
 	int i,j;
 	int count,row=0,col=0;
-	for (i=8;i>0;i--) 
+	for (i=9;i>0;i--) 
 	{
    		for (j=0;j<9;j++) 
 		{seat[i][j]='-';}
@@ -116,9 +116,9 @@ void ran(void)
 void table(void)
 {
 	int i,j;
-	for (i=8;i>0;i--)
+	for (i=9;i>0;i--)
 	{
-		printf("%d",i+1);
+		printf("%d",i);
    		for (j=0;j<9;j++) 
         {
         	printf("%c ",seat[i][j]);
@@ -129,7 +129,9 @@ void table(void)
 void bb(int seats) 
 {
     int n=0,row=0,col=0;
-    while(n<seats) 
+    if(seats<=3)
+    {
+	while(n<seats) 
     {
         row=rand()%9;
         col=rand()%9;
@@ -139,4 +141,5 @@ void bb(int seats)
             n++;
         }
     }
+}
 }
