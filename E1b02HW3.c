@@ -31,7 +31,7 @@ int main()
 	s();
 	int pass,n=0,j,i,seats=0;
 	int count,row=0,col=0;
-	
+	char ans;
 	char options;
 	for(n=1;n<=3;n++)
 	{
@@ -58,10 +58,11 @@ int main()
 	printf("--------------[ BookingSystem ]--------------\n");
 	printf("Please enter 'a','b','c'or'd'.\n");
 	scanf(" %c",&options);
+	ran();
 	switch (options)
 	{
 		case 'a':
-    		ran();
+    	//	ran();
     		table();
     		system("pause");
     		system("CLS");
@@ -71,8 +72,14 @@ int main()
 			scanf("%d",&seats);
 			bb(seats);
 			table(); // 再次顯示座位表
-            system("pause");
-            system("CLS");
+			printf("Are you satisfied with the seating arrangement?(y/n)");
+			scanf(" %c",&ans);
+			if(ans=='y'||'Y')
+			system("CLS");
+			else
+			system("CLS");
+            //system("pause");
+            
 			break;
 			
 		case 'c':
@@ -164,7 +171,7 @@ void bb(int seats)
 				seat[row][col] = '@';	
                 break;
             }
-            else if(seats==2&&seat[row][col]=='-'&&seat[row][col+1]=='-')
+            else if(col+2<10&&seats==2&&seat[row][col]=='-'&&seat[row][col+1]=='-')
             {
             	seat[row][col] = '@';
             	seat[row][col+1] = '@';
