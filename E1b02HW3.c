@@ -135,7 +135,7 @@ void bb(int seats)
         {
             row=rand() % 10; 
             col=rand() % 10; 
-            if (seat[row][col]=='-'&&seat[row][col+1]=='-'&&seat[row][col+2]=='-'&&seat[row][col+3]=='-')
+            if (col+3<10&&seat[row][col]=='-'&&seat[row][col+1]=='-'&&seat[row][col+2]=='-'&&seat[row][col+3]=='-')
             {
                 seat[row][col]='@';
                 seat[row][col+1]='@';
@@ -143,7 +143,7 @@ void bb(int seats)
                 seat[row][col+3]='@';
                 break;
             }
-            else if (seat[row][col]=='-'&&seat[row+1][col]=='-'&&seat[row][col+ 1]=='-'&&seat[row+1][col+1]=='-')
+            else if (row+1<10&&col+1<10&&seat[row][col]=='-'&&seat[row+1][col]=='-'&&seat[row][col+ 1]=='-'&&seat[row+1][col+1]=='-')
             {
                 seat[row][col]='@';
                 seat[row+1][col]='@';
