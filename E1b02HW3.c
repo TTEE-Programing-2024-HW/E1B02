@@ -89,14 +89,19 @@ int main()
 		case 'd':
 			printf("Continue?(y/n)\n");
 			scanf(" %c",&ans);
-			while(ans!='y'||ans!='Y'||ans!='n'||ans!='N')
+			while(ans!='y'&&ans!='Y'&&ans!='n'&&ans!='N')
 			{
 				printf("error!\n");
 				printf("Continue?(y/n)\n");
 				scanf(" %c",&ans);
 			}
-			
-			break;
+			if(ans=='y'||ans=='Y')
+			{
+				system("CLS");
+				break;
+			}
+			else 
+			return 0;
 	}
 }	
 }
