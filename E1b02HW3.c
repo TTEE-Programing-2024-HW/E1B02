@@ -32,7 +32,7 @@ int main()
 	s();
 	int pass,n=0,j,i,seats=0;
 	int count,row=0,col=0;
-
+	char ans;
 	char options;
 	for(n=1;n<=3;n++)
 	{
@@ -87,6 +87,15 @@ int main()
 			system("CLS");
 			break;
 		case 'd':
+			printf("Continue?(y/n)\n");
+			scanf(" %c",&ans);
+			while(ans!='y'||ans!='Y'||ans!='n'||ans!='N')
+			{
+				printf("error!\n");
+				printf("Continue?(y/n)\n");
+				scanf(" %c",&ans);
+			}
+			
 			break;
 	}
 }	
@@ -213,28 +222,24 @@ void cc(int seats)
 {
 	int row,col,i,j,n=0;
 	printf("Please select your seat!(Row-Column)\n");
+	printf("Press Enter after entering each seat\n");
 	while(1)
 	{
 		scanf("%d-%d",&row,&col);
+		fflush(stdin);
 		if(row>9||col>9||row<1||col<1)
 		{
 			printf("Invalid format,please re-enter(Row-Column)\n");
-			scanf("%d-%d",&row,&col);
 		}
-		else if(seat[row][col-1]=='*')
+		if(seat[row][col-1]=='*')
 		{
 			printf("This seat is already occupied,please re-enter(Row-Column)\n");
 			table();
-			scanf("%d-%d",&row,&col);
 		} 
-		else if(seat[row][col-1]=='-')
+		if(seat[row][col-1]=='-')
 		{	
 			seat[row][col-1]='@';
-			table();
-			for (i=9;i>=0;i--)
-        		for(j=0;j<9;j++)
-            		if (seat[i][j]=='@')
-            		{seat[i][j]='*';} 
+			table(); 
             n++;
         }
         if(n==seats)
@@ -243,5 +248,9 @@ void cc(int seats)
         	break;
     	}
     } 
+   	for (i=9;i>=0;i--)
+        for(j=0;j<9;j++)
+            if (seat[i][j]=='@')
+            {seat[i][j]='*';} 
 	
 }
