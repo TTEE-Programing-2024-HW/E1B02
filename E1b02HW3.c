@@ -205,9 +205,10 @@ void cc(void)
 {
 	int row,col,i,j;
 	printf("Please select your seat!(Row-Column)\n");
-	scanf("%d-%d",&row,&col);
+//	scanf("%d-%d",&row,&col);
 	while(1)
 	{
+		scanf("%d-%d",&row,&col);
 		if(row>9||col>9||row<1||col<1)
 		{
 			printf("Invalid format,please re-enter(Row-Column)\n");
@@ -224,12 +225,12 @@ void cc(void)
 		{	
 			seat[row][col-1]='@';
 			table();
-			printf("If you are satisfied with this seat, press any key");
+			printf("If you are satisfied with this seat, press any key\n");
 			for (i=9;i>=0;i--)
            		for(j=0;j<9;j++)
                 if (seat[i][j]=='@')
                 {seat[i][j]='*';} 
-			break;
+			continue;
         }
     } 			
 }
