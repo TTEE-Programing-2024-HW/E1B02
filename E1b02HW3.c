@@ -203,12 +203,18 @@ void cc(void)
 {
 	char rc[100]={0};
 	printf("Please select your seat!(Row-Column)\n");
-	scanf(" %s",&rc);
-	while(rc[1]!='-')
+	scanf(" %s",rc);
+	while(1)
 	{
-		printf("Invalid format,please re-enter(Row-Column)\n");
-		scanf(" %s",&rc);
+		if(rc[1]!='-'||rc[0]<0||rc[0]>9||rc[2]<0||rc[2]>9)
+		{
+			printf("Invalid format,please re-enter(Row-Column)\n");
+			scanf(" %s",rc);
+		}
+		else
+			break;
 	}
+
 }
 
 
