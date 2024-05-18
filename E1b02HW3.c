@@ -75,6 +75,8 @@ int main()
 			break;	
 		case 'c':
 			cc();
+			system("pause");
+			system("CLS");
 			break;
 		case 'd':
 			break;
@@ -201,34 +203,26 @@ void bb(int seats)
 }
 void cc(void)
 {
-	char rc[100]={0};
-	int row,col,i,j;
+	int row,col;
 	printf("Please select your seat!(Row-Column)\n");
-	scanf(" %s",rc);
+	scanf("%d-%d",&row,&col);
 	while(1)
 	{
-		if(rc[1]!='-'||rc[0]<'1'||rc[0]>'9'||rc[2]<'1'||rc[2]>'9')
+		if(row>9||col>9||row<1||col<1)
 		{
 			printf("Invalid format,please re-enter(Row-Column)\n");
-			scanf(" %s",rc);
+			scanf("%d-%d",&row,&col);
 		}
 		else if(seat[row-1][col-1]=='*')
 		{
-			printf("Invalid format,please re-enter(Row-Column)\n");
-			scanf(" %s",rc);
+			printf("This seat is already occupied,please re-enter(Row-Column)\n");
+			scanf("%d-%d",&row,&col);
 		} 
 		else if(seat[row-1][col-1]=='-')
 		{	
-			seat[row-1][col-1]=='@';
+			seat[row-1][col-1]='@';
 			table();
 			break;
         }
-    } 
-			
+    } 			
 }
-
-
-
-
-
-
