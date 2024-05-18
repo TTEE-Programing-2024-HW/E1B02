@@ -213,15 +213,17 @@ void cc(void)
 			printf("Invalid format,please re-enter(Row-Column)\n");
 			scanf("%d-%d",&row,&col);
 		}
-		else if(seat[row-1][col-1]=='*')
+		else if(seat[row][col-1]=='*')
 		{
 			printf("This seat is already occupied,please re-enter(Row-Column)\n");
+			table();
 			scanf("%d-%d",&row,&col);
 		} 
-		else if(seat[row-1][col-1]=='-')
+		else if(seat[row][col-1]=='-')
 		{	
-			seat[row-1][col-1]='@';
+			seat[row][col-1]='@';
 			table();
+			printf("If you are satisfied with this seat, press any key");
 			break;
         }
     } 			
