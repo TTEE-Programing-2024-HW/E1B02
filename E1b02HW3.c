@@ -5,7 +5,7 @@ void s(void);
 void ran(void);
 void table(void);
 void bb(int);
-void cc(void);
+void cc(int);
 char seat[9][9]={0};
 int main()
 {
@@ -60,6 +60,7 @@ int main()
 	printf("--------------[ BookingSystem ]--------------\n");
 	printf("Please enter 'a','b','c'or'd'.\n");
 	scanf(" %c",&options);
+	fflush(stdin);
 	switch (options)
 	{
 		case 'a':
@@ -70,11 +71,18 @@ int main()
 		case 'b':
 			printf("How many seats do you need?(1~4)");
 			scanf("%d",&seats);
+			while(seats>4)
+			{
+				printf("Maximum of 4 people allowed. Please re-enter.");
+				scanf("%d",&seats);
+			}
 			bb(seats);
 			system("CLS");
 			break;	
 		case 'c':
-			cc();
+			printf("How many seats do you need?");
+			scanf("%d",&seats);
+			cc(seats);
 			system("pause");
 			system("CLS");
 			break;
@@ -201,11 +209,10 @@ void bb(int seats)
                 {seat[i][j]='-';} 
     } 
 }
-void cc(void)
+void cc(int seats)
 {
-	int row,col,i,j;
+	int row,col,i,j,n=0;
 	printf("Please select your seat!(Row-Column)\n");
-//	scanf("%d-%d",&row,&col);
 	while(1)
 	{
 		scanf("%d-%d",&row,&col);
@@ -213,7 +220,6 @@ void cc(void)
 		{
 			printf("Invalid format,please re-enter(Row-Column)\n");
 			scanf("%d-%d",&row,&col);
-			fflush(stdin);
 		}
 		else if(seat[row][col-1]=='*')
 		{
@@ -225,12 +231,17 @@ void cc(void)
 		{	
 			seat[row][col-1]='@';
 			table();
-			printf("If you are satisfied with this seat, press any key\n");
 			for (i=9;i>=0;i--)
-           		for(j=0;j<9;j++)
-                if (seat[i][j]=='@')
-                {seat[i][j]='*';} 
-			continue;
+        		for(j=0;j<9;j++)
+            		if (seat[i][j]=='@')
+            		{seat[i][j]='*';} 
+            n++;
         }
-    } 			
+        if(n==seats)
+        {
+			printf("If you are satisfied with this seat, press any key\n");
+        	break;
+    	}
+    } 
+	
 }
