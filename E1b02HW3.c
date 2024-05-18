@@ -5,6 +5,7 @@ void s(void);
 void ran(void);
 void table(void);
 void bb(int);
+void cc(void);
 char seat[9][9]={0};
 int main()
 {
@@ -59,11 +60,9 @@ int main()
 	printf("--------------[ BookingSystem ]--------------\n");
 	printf("Please enter 'a','b','c'or'd'.\n");
 	scanf(" %c",&options);
-	
 	switch (options)
 	{
 		case 'a':
-    		//ran();
     		table();
     		system("pause");
     		system("CLS");
@@ -75,13 +74,12 @@ int main()
 			system("CLS");
 			break;	
 		case 'c':
-			
+			cc();
 			break;
 		case 'd':
 			break;
 	}
-}
-	
+}	
 }
 void s(void)
 {
@@ -95,10 +93,6 @@ void ran(void)
    		for (j=0;j<9;j++) 
 		{seat[i][j]='-';}
 	}
-		for (j=0;j<9;j++) 
-		{
-        	printf(" %d",j+1);
-        }
         srand(time(NULL)); //初始化隨機數生成器
         count=0;
     	while (count < 10) //當小於10時進入迴圈，因為要隨機生成10個位置 
@@ -205,4 +199,20 @@ void bb(int seats)
                 {seat[i][j]='-';} 
     } 
 }
+void cc(void)
+{
+	char rc[100]={0};
+	printf("Please select your seat!(Row-Column)\n");
+	scanf(" %s",&rc);
+	while(rc[1]!='-')
+	{
+		printf("Invalid format,please re-enter(Row-Column)\n");
+		scanf(" %s",&rc);
+	}
+}
+
+
+
+
+
 
