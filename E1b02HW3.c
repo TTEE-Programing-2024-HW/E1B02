@@ -202,19 +202,29 @@ void bb(int seats)
 void cc(void)
 {
 	char rc[100]={0};
+	int row,col,i,j;
 	printf("Please select your seat!(Row-Column)\n");
 	scanf(" %s",rc);
 	while(1)
 	{
-		if(rc[1]!='-'||rc[0]<0||rc[0]>9||rc[2]<0||rc[2]>9)
+		if(rc[1]!='-'||rc[0]<'1'||rc[0]>'9'||rc[2]<'1'||rc[2]>'9')
 		{
 			printf("Invalid format,please re-enter(Row-Column)\n");
 			scanf(" %s",rc);
 		}
-		else
+		else if(seat[row-1][col-1]=='*')
+		{
+			printf("Invalid format,please re-enter(Row-Column)\n");
+			scanf(" %s",rc);
+		} 
+		else if(seat[row-1][col-1]=='-')
+		{	
+			seat[row-1][col-1]=='@';
+			table();
 			break;
-	}
-
+        }
+    } 
+			
 }
 
 
