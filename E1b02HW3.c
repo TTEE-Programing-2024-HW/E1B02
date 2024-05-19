@@ -7,6 +7,7 @@ void table(void);
 void bb(int);
 void cc(int);
 char seat[9][9]={0};
+//個人風格的畫面
 int main()
 {
 	printf("H   H    W       W    3 3   \n");
@@ -34,23 +35,26 @@ int main()
 	int count,row=0,col=0;
 	char ans;
 	char options;
-	for(n=1;n<=3;n++)
+	//密碼設定 
+	for(n=1;n<=3;n++)//用迴圈設定3次機會 
 	{
 		printf("Enter password,please\n");
 		scanf("%d",&pass);
 		if(pass==2024)
 		{
 			printf("Correct\n");
-			break;
+			break;//如果正確就跳離迴圈 
 		}
 		else
 		{
 			printf("Error\n");
 		}
 	}
-	if(n>3) return 0;
-	system("CLS");
-	ran();
+	if(n>3) return 0;//超過3次就結束程式 
+	system("CLS");//清除螢幕
+	//個人風格主選單 
+	ran();//產生10個隨機座位的函式，放在迴圈外面以免每按一次a選項
+	//就重新產生新的隨機座位 
 	while(1){
 	printf("--------------[ BookingSystem ]--------------\n");
 	printf("|       a.Available seats                   |\n");
@@ -60,7 +64,7 @@ int main()
 	printf("--------------[ BookingSystem ]--------------\n");
 	printf("Please enter 'a','b','c'or'd'.\n");
 	scanf(" %c",&options);
-	fflush(stdin);
+	fflush(stdin);//清理緩衝區 
 	switch (options)
 	{
 		case 'a':
@@ -71,9 +75,9 @@ int main()
 		case 'b':
 			printf("How many seats do you need?(1~4)");
 			scanf("%d",&seats);
-			while(seats>4)
+			while(seats>4||seats<1)
 			{
-				printf("Maximum of 4 people allowed. Please re-enter.");
+				printf("Maximum of 4 people,minimum 1 person. Please re-enter.");
 				scanf("%d",&seats);
 			}
 			bb(seats);
@@ -160,7 +164,7 @@ void bb(int seats)
         {
             row=rand() % 10; 
             col=rand() % 10; 
-            if (col+3<10&&seat[row][col]=='-'&&seat[row][col+1]=='-'&&seat[row][col+2]=='-'&&seat[row][col+3]=='-')
+            if (col+3<9&&seat[row][col]=='-'&&seat[row][col+1]=='-'&&seat[row][col+2]=='-'&&seat[row][col+3]=='-')
             {
                 seat[row][col]='@';
                 seat[row][col+1]='@';
@@ -168,7 +172,7 @@ void bb(int seats)
                 seat[row][col+3]='@';
                 break;
             }
-            else if (row+1<10&&col+1<10&&seat[row][col]=='-'&&seat[row+1][col]=='-'&&seat[row][col+ 1]=='-'&&seat[row+1][col+1]=='-')
+            else if (row+1<9&&col+1<9&&seat[row][col]=='-'&&seat[row+1][col]=='-'&&seat[row][col+ 1]=='-'&&seat[row+1][col+1]=='-')
             {
                 seat[row][col]='@';
                 seat[row+1][col]='@';
