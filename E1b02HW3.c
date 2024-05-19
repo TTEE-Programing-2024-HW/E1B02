@@ -30,7 +30,7 @@ int main()
 	printf("the last number:n4    \n");
 	printf("Password hint 3\n");
 	printf("hint 2 is related to Chinese\n");
-	s();
+	s();  
 	int pass,n=0,j,i,seats=0;
 	int count,row=0,col=0;
 	char ans;
