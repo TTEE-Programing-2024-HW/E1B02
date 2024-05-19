@@ -7,7 +7,7 @@ void table(void);
 void bb(int);
 void cc(int);
 char seat[9][9]={0};
-//個人風格的畫面
+//Personal style picture
 int main()
 {
 	printf("H   H    W       W    3 3   \n");
@@ -35,26 +35,25 @@ int main()
 	int count,row=0,col=0;
 	char ans;
 	char options;
-	//密碼設定 
-	for(n=1;n<=3;n++)//用迴圈設定3次機會 
+	//Password setting 
+	for(n=1;n<=3;n++)//Set 3 opportunities using loop 
 	{
 		printf("Enter password,please\n");
 		scanf("%d",&pass);
 		if(pass==2024)
 		{
 			printf("Correct\n");
-			break;//如果正確就跳離迴圈 
+			break;//If correct, jump out of the loop 
 		}
 		else
 		{
 			printf("Error\n");
 		}
 	}
-	if(n>3) return 0;//超過3次就結束程式 
-	system("CLS");//清除螢幕
-	//個人風格主選單 
-	ran();//產生10個隨機座位的函式，放在迴圈外面以免每按一次a選項
-	//就重新產生新的隨機座位 
+	if(n>3) return 0;//End the program if it exceeds 3 times 
+	system("CLS");//Clear the screen
+	//Personal style main menu
+	ran();//Function to generate 10 random seats
 	while(1){
 	printf("--------------[ BookingSystem ]--------------\n");
 	printf("|       a.Available seats                   |\n");
@@ -64,74 +63,75 @@ int main()
 	printf("--------------[ BookingSystem ]--------------\n");
 	printf("Please enter 'a','b','c'or'd'.\n");
 	scanf(" %c",&options);
-	fflush(stdin);//清理緩衝區 
+	fflush(stdin);//Clear the buffer
 	switch (options)
 	{
 		case 'a':
-    		table();//列印出隨機座位表 
+    		table();//Print out random seating chart
     		system("pause");
     		system("CLS");
         break;
 		case 'b':
 			printf("How many seats do you need?(1~4)");
 			scanf("%d",&seats);
-			while(seats>4||seats<1)//設定人數1~4人才能夠安排隨機座位 
+			while(seats>4||seats<1)//Set the number of people to 1~4 people to arrange random seats
 			{
 				printf("Maximum of 4 people,minimum 1 person. Please re-enter.\n");
 				scanf("%d",&seats);
 			}
-			bb(seats);//安排隨機座位 
+			bb(seats);//Arrange random seats
 			system("CLS");
 			break;	
 		case 'c':
 			printf("How many seats do you need?");
 			scanf("%d",&seats);
-			while(seats<1)//設定最少選擇一個座位 
+			while(seats<1)//Set at least one seat to be selected
 			{
 				printf("Minimum 1 person.Please re-enter.\n");
 				scanf("%d",&seats);
 			}
-			cc(seats);//選擇座位 
+			cc(seats);//select seats
 			system("pause");
 			system("CLS");
 			break;
 		case 'd':
 			printf("Continue?(y/n)\n");
 			scanf(" %c",&ans);
-			while(ans!='y'&&ans!='Y'&&ans!='n'&&ans!='N')//設定只能輸入y或是n 
+			while(ans!='y'&&ans!='Y'&&ans!='n'&&ans!='N')//Set only y or n can be entered 
 			{
 				printf("error!\n");
 				printf("Continue?(y/n)\n");
 				scanf(" %c",&ans);
 			}
-			if(ans=='y'||ans=='Y')//輸入y返回主選單 
+			if(ans=='y'||ans=='Y')//Enter y to return to the main menu
 			{
 				system("CLS");
 				break;
 			}
-			else //輸入n返回作業系統 
+			else //Input n to return the operating system
 			return 0;
 	}
 }	
 }
-void s(void)//生成=的函式 
+void s(void)//function that generates =
 {
 	printf("------------------------------------------\n");
 }
-void ran(void)//生成10個隨機座位的函式 
+void ran(void)//Function to generate 10 random seats 
 {
 	int count,row=0,col=0,i=0,j=0;
-	for (i=9;i>0;i--) //將陣列元素設成- 
+	for (i=9;i>0;i--) //Set array elements to - 
 	{
    		for (j=0;j<9;j++) 
 		{seat[i][j]='-';}
 	}
-        srand(time(NULL)); //初始化隨機數生成器
+        srand(time(NULL)); //Initialize the random number generator
         count=0;
-    	while (count < 10) //當小於10時進入迴圈，因為要隨機生成10個位置 
+    	while (count < 10) 
+		//When it is less than 10, it enters a loop because 10 positions are randomly generated.
 		{
-        	row=rand() % 10;//隨機生成0~9的數字，%10餘數0~9 
-         	col=rand() % 10;//隨機生成0~9的數字，%10餘數0~9 
+        	row=rand() % 10;//Randomly generate numbers from 0 to 9, %10 remainder 0 to 9
+         	col=rand() % 10;//Randomly generate numbers from 0 to 9, %10 remainder 0 to 9
 			if (seat[row][col]=='-') 
 			{
 				seat[row][col] = '*';
@@ -140,15 +140,15 @@ void ran(void)//生成10個隨機座位的函式
     	}
         	printf("\n");
 }
-void table(void)//列印出10個隨機座位的結果 
+void table(void)//Print out the results of 10 random seats
 {
 	int i=0,j=0;
-	for (j=0;j<9;j++) //列印座位表的數字列 
+	for (j=0;j<9;j++) //Print the number column of the seating chart 
 	{
-        printf(" %d",j+1);//因為陣列從0開始，所以j+1 
+        printf(" %d",j+1);//Since the array starts at 0, j+1 
     }
     printf("\n");
-	for (i=9;i>0;i--)//列印座位表的數字行，從9~1 
+	for (i=9;i>0;i--)//Print the number row of the seating chart, from 9 to 1
 	{
 		printf("%d",i);
    		for (j=0;j<9;j++) 
@@ -158,28 +158,28 @@ void table(void)//列印出10個隨機座位的結果
         		printf("\n");
     }
 }
-void bb(int seats)//隨機座位函式 
+void bb(int seats)//Random seat function
 {
     int n=0,row=0,col=0,i=0,j=0;
     char ans;
-    srand(time(NULL));//初始化隨機數生成器
-    if(seats==4)//當使用者輸入4個位置時 
+    srand(time(NULL));//Initialize random number generator
+    if(seats==4)//When the user enters 4 locations
     {
         while (1)
         {
-            row=rand() % 10;//隨機生成0~9的數字，%10餘數0~9
-            col=rand() % 10;//隨機生成0~9的數字，%10餘數0~9
+            row=rand() % 10;//Randomly generate numbers from 0 to 9, %10 remainder 0 to 9
+            col=rand() % 10;//Randomly generate numbers from 0 to 9, %10 remainder 0 to 9
             if (col+3<9&&seat[row][col]=='-'&&seat[row][col+1]=='-'&&seat[row][col+2]=='-'&&seat[row][col+3]=='-')
-            {//設定最大範圍不會超出邊界值，檢查這列是否符合4個都是- 
-                seat[row][col]='@';//如果符合就把-改成@ 
+            {//Set the maximum range so that it does not exceed the boundary value. Check whether this column meets the 4 values-
+                seat[row][col]='@';//If it matches, change - to @
                 seat[row][col+1]='@';
                 seat[row][col+2]='@';
                 seat[row][col+3]='@';
                 break;
             }
             else if (row+1<9&&col+1<9&&seat[row][col]=='-'&&seat[row+1][col]=='-'&&seat[row][col+ 1]=='-'&&seat[row+1][col+1]=='-')
-            {//設定最大範圍不會超出邊界值，檢查相鄰前後兩列各兩位是否為- 
-                seat[row][col]='@';//如果符合就把-改成@ 
+            {//Set the maximum range so that it does not exceed the boundary value, and check whether the two digits in the adjacent two columns are -
+                seat[row][col]='@';//If it matches, change - to @
                 seat[row+1][col]='@';
                 seat[row][col+1]='@';
                 seat[row+1][col+1]='@';
@@ -187,26 +187,26 @@ void bb(int seats)//隨機座位函式
             }
         }
     }
-    else if(seats<=3&&seats>0)//當輸入介於1~3 
+    else if(seats<=3&&seats>0)//When the input is between 1~3
     {
     	while (1)
         {
             row=rand() % 10; 
             col=rand() % 10; 
             if (seats==1&&seat[row][col]=='-')
-            {//當只要一個位置時，檢查是否有-
-				seat[row][col] = '@';//如果符合就把-改成@
+            {//When only one position is required, check if there is -
+				seat[row][col] = '@';//If it matches, change - to @
                 break;
             }
             else if(col+2<10&&seats==2&&seat[row][col]=='-'&&seat[row][col+1]=='-')
-            {//當需要兩個位置時，檢查是否有連續的兩個-且在同列 
-            	seat[row][col] = '@';//如果符合就把-改成@
+            {//When two positions are needed, check whether there are two consecutive ones in the same column 
+            	seat[row][col] = '@';//If it matches, change - to @
             	seat[row][col+1] = '@';
             	break;
 			}
 			else if(col+3<10&&seats==3&&seat[row][col]=='-'&&seat[row][col+1]=='-'&&seat[row][col+2]=='-')
-			{//當需要三個位置時，檢查是否有連續的三個-且在同列
-				seat[row][col] = '@';//如果符合就把-改成@
+			{//When three positions are needed, check whether there are three consecutive ones - and in the same column
+				seat[row][col] = '@';//If it matches, change - to @
             	seat[row][col+1] = '@';
             	seat[row][col+2] = '@';
             	break;
@@ -214,58 +214,58 @@ void bb(int seats)//隨機座位函式
         }
         	
 	} 
-	table();//更新座位表 
+	table();//Update seating chart
     printf("Are you satisfied with the seating arrangement?(y/n)");
 	scanf(" %c",&ans);
-	if(ans=='y'||ans=='Y')//如果滿意 
+	if(ans=='y'||ans=='Y')//If satisfied 
 	{	
 		for (i=9;i>=0;i--)
            	for (j=0;j<9;j++)
             	if (seat[i][j]=='@')
-            	{seat[i][j]='*';} //就把@改成*表示有人座了 
+            	{seat[i][j]='*';} //Change @ to * 
     } 
-	else//不滿意 
+	else//Not satisfied
 	{
 		for (i=9;i>=0;i--)
            	for(j=0;j<9;j++)
                 if (seat[i][j]=='@')
-                {seat[i][j]='-';} //就把@改回- 
+                {seat[i][j]='-';}//Just change @ back to -
     } 
 }
-void cc(int seats)//自選座位 
+void cc(int seats)//Seat of your choice
 {
 	int row,col,i,j,n=0;
 	printf("Please select your seat!(Row-Column)\n");
 	printf("Press Enter after entering each seat\n");
-	//輸入完一個座位按一下enter 
+	//After entering a seat, press enter
 	while(1)
 	{
 		scanf("%d-%d",&row,&col);
 		fflush(stdin);
-		if(row>9||col>9||row<1||col<1)//檢查是否符合座位表範圍 
+		if(row>9||col>9||row<1||col<1)//Check whether it matches the seating chart range
 		{
 			printf("Invalid format,please re-enter(Row-Column)\n");
 		}
-		if(seat[row][col-1]=='*')//如果使用者所選的位置有人 
-		{//提醒使用者這個位置已經有人了 
+		if(seat[row][col-1]=='*')//If there is someone in the location selected by the user 
+		{//Alert users that this location is already occupied
 			printf("This seat is already occupied,please re-enter(Row-Column)\n");
-			table();//展示座位表給使用者，方便他重選位置 
+			table();//Display the seating chart to the user so that he or she can reselect a seat 
 		} 
-		if(seat[row][col-1]=='-')//如果這個位置沒人 
+		if(seat[row][col-1]=='-')//If there is no one at this location
 		{	
-			seat[row][col-1]='@';//把-改成@ 
-			table(); //展示座位表給使用者看 
-            n++;//選位置次數加一 
+			seat[row][col-1]='@';//Change - to @
+			table(); //Show seating chart to users 
+            n++;//Add one to the number of times you choose a location 
         }
-        if(n==seats)//如果選位置次數等於一開始輸入的位置個數 
+        if(n==seats)//If the number of selected positions is equal to the number of positions entered at the beginning 
         {
 			printf("If you are satisfied with this seat, press any key\n");
-        	break;//跳離迴圈 
+        	break;//Jump out of the loop
     	}
     } 
    	for (i=9;i>=0;i--)
         for(j=0;j<9;j++)
-            if (seat[i][j]=='@')//記錄下剛才的選擇 
+            if (seat[i][j]=='@')//Record the choice you just made
             {seat[i][j]='*';} 
 	
 }
