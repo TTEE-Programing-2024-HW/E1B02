@@ -102,6 +102,22 @@ void aa(void)
             printf("學號錯誤，請重新輸入(6位數)\n");
             scanf("%s", student[i].num);
         }
+        while(student[i].physics<0||student[i].physics>100)
+        {
+        	printf("物理成績錯誤，請重新輸入(0~100)\n");
+            scanf("%d",&student[i].physics);
+		}
+		while(student[i].math<0||student[i].math>100)
+        {
+        	printf("數學成績錯誤，請重新輸入(0~100)\n");
+            scanf("%d",&student[i].math);
+		}
+		while(student[i].english<0||student[i].english>100)
+        {
+        	printf("英文成績錯誤，請重新輸入(0~100)\n");
+            scanf("%d",&student[i].english);
+		}
+		
     }
 
 			
