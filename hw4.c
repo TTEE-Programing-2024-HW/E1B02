@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 void s(void);
+void aa(void);
 int main()
 { 
 	s();
@@ -26,6 +27,7 @@ int main()
 	printf("第四個數字:RDLDR+RDLDR\n");
 	s();
 	int pass,n=0;
+	char option;
 	do
 	{
 		if(n<3)
@@ -37,12 +39,55 @@ int main()
 		else
 		{
 			printf("輸入超過三次!!\n");
-			break;
+			return 0;
 		}
 	}while(pass!=2024);
+	while(1)
+	{
+	system("CLS");
+	printf("============[Grade System]=============\n");
+	printf("||                                    ||\n");
+	printf("||       a.Enter student grades       ||\n");
+	printf("||      b.Display student grades      ||\n");
+	printf("||     c.Search for student grades    ||\n");
+	printf("||      d.Grade ranking               ||\n");
+	printf("||       e. Exit system           ^ ^ ||\n");
+	printf("||                                 v  ||\n");
+	printf("=============[Grade System]=============\n");
+	printf("輸入選擇a,b,c,d,e:\n");
+	scanf(" %c",&option);
+	switch(option)
+	{
+		case 'a':
+			system("CLS");
+			aa();	
+			
+	}
+	}
+	
 	return 0;
 }
 void s(void)
 {
 	printf("====================================================\n");
+}
+void aa(void)
+{
+	int n=0;
+	struct student
+	{
+		char name[10];
+		char num[10];
+		int physics;
+		int math;
+		int english;
+	}grades;
+	printf("輸入n(5~10)筆學生\n");
+	scanf("%d",&n);
+	while(n<5||n>50)
+	{
+		printf("重新輸入n(5~10)筆學生\n");
+		scanf("%d",&n);
+	}
+		
 }
