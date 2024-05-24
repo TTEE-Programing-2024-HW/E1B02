@@ -3,6 +3,7 @@
 #include<string.h>
 void s(void);
 void aa(void);
+void bb(void);
 int main()
 { 
 	s();
@@ -61,8 +62,12 @@ int main()
 	{
 		case 'a':
 			system("CLS");
-			aa();	
-			
+			aa();
+			break;
+		case 'b':
+			system("CLS");	
+			bb();
+			break;
 	}
 	}
 	
@@ -91,12 +96,12 @@ void aa(void)
 		printf("重新輸入n(5~10)筆學生\n");
 		scanf("%d",&n);
 	}
+	printf("輸入學生名字、學號(6位數)、物理、數學、英文(0~100)成績\n");
+    printf("用空格隔開\n");
 	for (i=0;i<n;i++)
     {
-        printf("輸入學生名字、學號(6位數)、物理、數學、英文(0~100)成績\n");
-        printf("用空格隔開\n");
+    	printf("第%d位學生",i+1);
         scanf("%s %s %d %d %d", student[i].name, student[i].num, &student[i].physics, &student[i].math, &student[i].english);
-        
         while (strlen(student[i].num) != 6)
         {
             printf("學號錯誤，請重新輸入(6位數)\n");
@@ -116,11 +121,24 @@ void aa(void)
         {
         	printf("英文成績錯誤，請重新輸入(0~100)\n");
             scanf("%d",&student[i].english);
-		}
-		
-    }
-
-			
-	
-		
+		}	
+    }	
+}
+void bb(void)
+{
+	int n=0,i=0;
+	struct grades
+	{
+		char name[10];
+		char num[10];
+		int physics;
+		int math;
+		int english;
+	};
+	struct grades student[100];
+	for (i=0;i<n;i++)
+    {
+    	printf("學生    學號    物理(分)    數學(分)    英文(分)\n");
+    	printf("%s %s %d %d %d", student[i].name, student[i].num, &student[i].physics, &student[i].math, &student[i].english);
+	}
 }
