@@ -3,16 +3,17 @@
 #include<string.h>
 void s(void);
 void aa(int);
-void bb(void);
+void bb(int);
 struct grades
 {
-	char name[10];
-	char num[10];
-	int physics;
-	int math;
-	int english;
+    char name[10];
+    char num[10];
+    int physics;
+    int math;
+    int english;
 };
-	struct grades student[100];
+struct grades student[100];
+int peo = 0;
 int main()
 { 
 	s();
@@ -81,9 +82,15 @@ int main()
 			aa(peo);
 			break;
 		case 'b':
-			system("CLS");	
-			bb();
+			system("CLS");    
+            bb(peo);
+            system("pause");
 			break;
+		case 'c':
+			break;
+		case 'd':
+			break;
+		
 	}
 	}
 	
@@ -124,13 +131,12 @@ void aa(int peo)
 		}	
     }	
 }
-void bb(void)
+void bb(int peo)
 {
-	int n=0,i=0;
-	struct grades student[100];
-	for (i=0;i<n;i++)
+    int i=0;
+    for(i=0;i<peo;i++)
     {
-    	printf("學生    學號    物理(分)    數學(分)    英文(分)\n");
-    	printf("%s %s %d %d %d", student[i].name, student[i].num, &student[i].physics, &student[i].math, &student[i].english);
-	}
+        printf("學生:%s 學號:%s 物理(分):%d 數學(分):%d  英文(分):%d\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english);
+    }
 }
+
