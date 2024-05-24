@@ -2,8 +2,17 @@
 #include<stdlib.h>
 #include<string.h>
 void s(void);
-void aa(void);
+void aa(int);
 void bb(void);
+struct grades
+{
+	char name[10];
+	char num[10];
+	int physics;
+	int math;
+	int english;
+};
+	struct grades student[100];
 int main()
 { 
 	s();
@@ -28,7 +37,7 @@ int main()
 	printf("第三個數字:RDLDR\n");
 	printf("第四個數字:RDLDR+RDLDR\n");
 	s();
-	int pass,n=0;
+	int pass,n=0,peo=0;
 	char option;
 	do
 	{
@@ -62,7 +71,14 @@ int main()
 	{
 		case 'a':
 			system("CLS");
-			aa();
+			printf("輸入n(5~10)筆學生\n");
+			scanf("%d",&peo);
+			while(peo<5||peo>50)
+			{
+				printf("重新輸入(5~10)筆學生\n");
+				scanf("%d",&peo);
+			}
+			aa(peo);
 			break;
 		case 'b':
 			system("CLS");	
@@ -77,28 +93,12 @@ void s(void)
 {
 	printf("====================================================\n");
 }
-void aa(void)
+void aa(int peo)
 {
-	int n=0,i=0;
-	struct grades
-	{
-		char name[10];
-		char num[10];
-		int physics;
-		int math;
-		int english;
-	};
-	struct grades student[100];
-	printf("輸入n(5~10)筆學生\n");
-	scanf("%d",&n);
-	while(n<5||n>50)
-	{
-		printf("重新輸入n(5~10)筆學生\n");
-		scanf("%d",&n);
-	}
+	int i=0;
 	printf("輸入學生名字、學號(6位數)、物理、數學、英文(0~100)成績\n");
     printf("用空格隔開\n");
-	for (i=0;i<n;i++)
+	for (i=0;i<peo;i++)
     {
     	printf("第%d位學生",i+1);
         scanf("%s %s %d %d %d", student[i].name, student[i].num, &student[i].physics, &student[i].math, &student[i].english);
@@ -127,14 +127,6 @@ void aa(void)
 void bb(void)
 {
 	int n=0,i=0;
-	struct grades
-	{
-		char name[10];
-		char num[10];
-		int physics;
-		int math;
-		int english;
-	};
 	struct grades student[100];
 	for (i=0;i<n;i++)
     {
