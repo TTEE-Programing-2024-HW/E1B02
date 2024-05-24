@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 void s(void);
 void aa(void);
 int main()
@@ -73,15 +74,16 @@ void s(void)
 }
 void aa(void)
 {
-	int n=0;
-	struct student
+	int n=0,i=0;
+	struct grades
 	{
 		char name[10];
 		char num[10];
 		int physics;
 		int math;
 		int english;
-	}grades;
+	};
+	struct grades student[100];
 	printf("輸入n(5~10)筆學生\n");
 	scanf("%d",&n);
 	while(n<5||n>50)
@@ -89,5 +91,20 @@ void aa(void)
 		printf("重新輸入n(5~10)筆學生\n");
 		scanf("%d",&n);
 	}
+	for (i=0;i<n;i++)
+    {
+        printf("輸入學生名字、學號(6位數)、物理、數學、英文(0~100)成績\n");
+        printf("用空格隔開\n");
+        scanf("%s %s %d %d %d", student[i].name, student[i].num, &student[i].physics, &student[i].math, &student[i].english);
+        
+        while (strlen(student[i].num) != 6)
+        {
+            printf("學號錯誤，請重新輸入(6位數)\n");
+            scanf("%s", student[i].num);
+        }
+    }
+
+			
+	
 		
 }
