@@ -9,9 +9,9 @@ struct grades
 {
     char name[10];
     char num[10];
-    int physics;
-    int math;
-    int english;
+    float physics;
+    float math;
+    float english;
 };
 struct grades student[100];
 int peo = 0;
@@ -112,7 +112,7 @@ void aa(int peo)
 	for (i=0;i<peo;i++)
     {
     	printf("第%d位學生",i+1);
-        scanf("%s %s %d %d %d", student[i].name, student[i].num, &student[i].physics, &student[i].math, &student[i].english);
+        scanf("%s %s %f %f %f", student[i].name, student[i].num, &student[i].physics, &student[i].math, &student[i].english);
         while (strlen(student[i].num) != 6)
         {
             printf("學號錯誤，請重新輸入(6位數)\n");
@@ -121,26 +121,29 @@ void aa(int peo)
         while(student[i].physics<0||student[i].physics>100)
         {
         	printf("物理成績錯誤，請重新輸入(0~100)\n");
-            scanf("%d",&student[i].physics);
+            scanf("%f",&student[i].physics);
 		}
 		while(student[i].math<0||student[i].math>100)
         {
         	printf("數學成績錯誤，請重新輸入(0~100)\n");
-            scanf("%d",&student[i].math);
+            scanf("%f",&student[i].math);
 		}
 		while(student[i].english<0||student[i].english>100)
         {
         	printf("英文成績錯誤，請重新輸入(0~100)\n");
-            scanf("%d",&student[i].english);
+            scanf("%f",&student[i].english);
 		}	
     }	
 }
 void bb(int peo)
 {
     int i=0;
+    float sum=0,avg=0;
     for(i=0;i<peo;i++)
     {
-        printf("學生:%s 學號:%s 物理(分):%d 數學(分):%d  英文(分):%d\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english);
+    	sum=student[i].physics+student[i].math+student[i].english;
+    	avg=sum/3;
+        printf("學生:%s 學號:%s 物理(分):%3.1f 數學(分):%3.1f  英文(分):%3.1f 平均(分):%3.2f\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english,avg);
     }
 }
 void cc(int peo)
@@ -154,10 +157,10 @@ void cc(int peo)
 		ok=strcmp(student[i].name,name);
 		if(ok==0)
 		{
-			printf("學生:%s 學號:%s 物理(分):%d 數學(分):%d  英文(分):%d\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english);
+			printf("學生:%s 學號:%s 物理(分):%3.1f 數學(分):%3.1 英文(分):%3.1f\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english);
 		}
 	}
 	if(ok!=0)
-		printf("資料不存在");
+		printf("資料不存在\n");
 }
 
