@@ -157,5 +157,7 @@ void cc(int peo)
 			printf("學生:%s 學號:%s 物理(分):%d 數學(分):%d  英文(分):%d\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english);
 		}
 	}
+	if(ok!=0)
+		printf("資料不存在");
 }
 
