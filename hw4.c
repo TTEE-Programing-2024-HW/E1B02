@@ -180,7 +180,7 @@ void dd(int peo)
 	{
 		sum[i]=student[i].physics+student[i].math+student[i].english;
     	avg[i]=sum[i]/3;
-		for(j=0;i<(peo-i-1);j++)
+		for(j=0;j<(peo-i-1);j++)
 		{
 			if(avg[j]>avg[j+1])
 			{
@@ -189,6 +189,9 @@ void dd(int peo)
 				avg[j+1]=temp;
 			}
 		}
+	}
+	for(i=0;i<peo;i++)
+	{
 		printf("學生%s 學號:%s 平均(分):%3.1f\t\n",student[i].name,student[i].num,avg[i]);
 	}
 }
