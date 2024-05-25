@@ -41,7 +41,7 @@ int main()
 	printf("第四個數字:RDLDR+RDLDR\n");
 	s();
 	int pass,n=0,peo=0;
-	char option;
+	char option,cho;
 	do
 	{
 		if(n<3)
@@ -74,11 +74,11 @@ int main()
 	{
 		case 'a':
 			system("CLS");
-			printf("輸入n(5~10)筆學生\n");
+			printf("輸入n(5~50)筆學生\n");
 			scanf("%d",&peo);
 			while(peo<5||peo>50)
 			{
-				printf("重新輸入(5~10)筆學生\n");
+				printf("重新輸入(5~50)筆學生\n");
 				scanf("%d",&peo);
 			}
 			aa(peo);
@@ -98,7 +98,18 @@ int main()
             dd(peo);
             system("pause");
 			break;
-		
+		case 'e':
+			printf("是否離開(y/n)?\n");
+			scanf(" %c",&cho);
+			while(cho!='y'&&cho!='Y'&&cho!='n'&&cho!='N')
+			{
+				printf("錯誤，請重新輸入是否離開(y/n)");
+				scanf(" %c",&cho);
+			}
+			if(cho=='y'||cho=='Y')
+				return 0;
+			else
+				break;
 	}
 	}
 	
@@ -115,7 +126,7 @@ void aa(int peo)
     printf("用空格隔開\n");
 	for (i=0;i<peo;i++)
     {
-    	printf("第%d位學生",i+1);
+    //	printf("第%d位學生",i+1);
         scanf("%s %s %f %f %f", student[i].name, student[i].num, &student[i].physics, &student[i].math, &student[i].english);
         while (strlen(student[i].num) != 6)
         {
@@ -173,32 +184,38 @@ void cc(int peo)
 }
 void dd(int peo)
 {
-	int i=0,j=0;
-	float sum[peo],avg[peo],temp;
-	printf("排名:\n");
-	for (i=0;i<peo;i++)
+    int i = 0, j = 0;
+    float sum[peo], avg[peo], temp;
+    printf("排名:\n");
+    // 計算每個學生的平均分數
+    for (i = 0; i < peo; i++)
     {
-        sum[i]=student[i].physics+student[i].math+student[i].english;
-        avg[i]=sum[i]/3;
+        sum[i] = student[i].physics + student[i].math + student[i].english;
+        avg[i] = sum[i] / 3;
     }
-	for(i=0;i<peo-1;i++)
-	{
-		for(j=0;j<peo-1-i;j++)
-		{
-			if(avg[j]<avg[j+1])
-			{
-				temp=avg[j+1];
-				avg[j+1]=avg[j];
-				avg[j]=temp;
-				struct grades tempStudent = student[j];
-                student[j+1]=student[j];
-                student[j]=tempStudent;
-			}
-		}
-	}
-	for(i=0;i<peo;i++)
-	{
-		printf("第%d名:學生%s 學號:%s 平均(分):%3.1f\t\n",i+1,student[i].name,student[i].num,avg[i]);
-	}
+    // 使用冒泡排序法將平均分數從大到小排序
+    for (i = 0; i < peo - 1; i++)
+    {
+        for (j = 0; j < peo - 1 - i; j++)
+        {
+            if (avg[j] < avg[j + 1])
+            {
+                // 交換平均分數
+                temp = avg[j + 1];
+                avg[j + 1] = avg[j];
+                avg[j] = temp;
+                // 交換學生資料
+                struct grades tempStudent = student[j + 1];
+                student[j + 1] = student[j];
+                student[j] = tempStudent;
+            }
+        }
+    }
+    // 印出排名和學生資料
+    for (i = 0; i < peo; i++)
+    {
+        printf("第%d名: 學生%s 學號:%s 平均(分):%3.1f\n", i + 1, student[i].name, student[i].num, avg[i]);
+    }
 }
+
 
