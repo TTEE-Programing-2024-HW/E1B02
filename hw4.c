@@ -176,23 +176,29 @@ void dd(int peo)
 	int i=0,j=0;
 	float sum[peo],avg[peo],temp;
 	printf("排名:\n");
-	for(i=0;i<peo;i++)
+	for (i=0;i<peo;i++)
+    {
+        sum[i]=student[i].physics+student[i].math+student[i].english;
+        avg[i]=sum[i]/3;
+    }
+	for(i=0;i<peo-1;i++)
 	{
-		sum[i]=student[i].physics+student[i].math+student[i].english;
-    	avg[i]=sum[i]/3;
-		for(j=0;j<(peo-i-1);j++)
+		for(j=0;j<peo-1-i;j++)
 		{
-			if(avg[j]>avg[j+1])
+			if(avg[j]<avg[j+1])
 			{
-				temp=avg[j];
-				avg[j]=avg[j+1];
-				avg[j+1]=temp;
+				temp=avg[j+1];
+				avg[j+1]=avg[j];
+				avg[j]=temp;
+				struct grades tempStudent = student[j];
+                student[j+1]=student[j];
+                student[j]=tempStudent;
 			}
 		}
 	}
 	for(i=0;i<peo;i++)
 	{
-		printf("學生%s 學號:%s 平均(分):%3.1f\t\n",student[i].name,student[i].num,avg[i]);
+		printf("第%d名:學生%s 學號:%s 平均(分):%3.1f\t\n",i+1,student[i].name,student[i].num,avg[i]);
 	}
 }
 
