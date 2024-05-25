@@ -5,6 +5,7 @@ void s(void);
 void aa(int);
 void bb(int);
 void cc(int);
+void dd(int);
 struct grades
 {
     char name[10];
@@ -93,6 +94,9 @@ int main()
             system("pause");
 			break;
 		case 'd':
+			system("CLS");    
+            dd(peo);
+            system("pause");
 			break;
 		
 	}
@@ -166,5 +170,26 @@ void cc(int peo)
 	}
 	if(tag==0)
 		printf("資料不存在\n");
+}
+void dd(int peo)
+{
+	int i=0,j=0;
+	float sum[peo],avg[peo],temp;
+	printf("排名:\n");
+	for(i=0;i<peo;i++)
+	{
+		sum[i]=student[i].physics+student[i].math+student[i].english;
+    	avg[i]=sum[i]/3;
+		for(j=0;i<(peo-i-1);j++)
+		{
+			if(avg[j]>avg[j+1])
+			{
+				temp=avg[j];
+				avg[j]=avg[j+1];
+				avg[j+1]=temp;
+			}
+		}
+		printf("學生%s 學號:%s 平均(分):%3.1f\t\n",student[i].name,student[i].num,avg[i]);
+	}
 }
 
