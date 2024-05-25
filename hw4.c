@@ -145,10 +145,10 @@ void bb(int peo)
 }
 void cc(int peo)
 {
-	char name;
+	char name[10];
 	int ok=0,i=0;
 	printf("要查詢的學生姓名:\n");
-	scanf("%s",&name);
+	scanf("%s",name);
 	for(i=0;i<peo;i++)
 	{
 		ok=strcmp(student[i].name,name);
