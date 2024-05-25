@@ -4,6 +4,7 @@
 void s(void);
 void aa(int);
 void bb(int);
+void cc(int);
 struct grades
 {
     char name[10];
@@ -87,6 +88,9 @@ int main()
             system("pause");
 			break;
 		case 'c':
+			system("CLS");    
+            cc(peo);
+            system("pause");
 			break;
 		case 'd':
 			break;
@@ -138,5 +142,20 @@ void bb(int peo)
     {
         printf("學生:%s 學號:%s 物理(分):%d 數學(分):%d  英文(分):%d\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english);
     }
+}
+void cc(int peo)
+{
+	char name;
+	int ok=0,i=0;
+	printf("要查詢的學生姓名:\n");
+	scanf("%s",&name);
+	for(i=0;i<peo;i++)
+	{
+		ok=strcmp(student[i].name,name);
+		if(ok==0)
+		{
+			printf("學生:%s 學號:%s 物理(分):%d 數學(分):%d  英文(分):%d\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english);
+		}
+	}
 }
 
