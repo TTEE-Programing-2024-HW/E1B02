@@ -14,7 +14,7 @@ struct grades
     float physics;
     float math;
     float english;
-};
+};  
 struct grades student[100];
 int peo = 0;
 //Åwªï­¶­± 
