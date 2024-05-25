@@ -143,13 +143,14 @@ void bb(int peo)
     {
     	sum=student[i].physics+student[i].math+student[i].english;
     	avg=sum/3;
-        printf("學生:%s 學號:%s 物理(分):%3.1f 數學(分):%3.1f  英文(分):%3.1f 平均(分):%3.2f\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english,avg);
+        printf("學生:%s 學號:%s 物理(分):%3.1f 數學(分):%3.1f  英文(分):%3.1f 平均(分):%3.1f\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english,avg);
     }
 }
 void cc(int peo)
 {
 	char name[10];
-	int ok=0,i=0;
+	int ok=0,i=0,tag=0;
+	float sum=0,avg=0;
 	printf("要查詢的學生姓名:\n");
 	scanf("%s",name);
 	for(i=0;i<peo;i++)
@@ -157,10 +158,13 @@ void cc(int peo)
 		ok=strcmp(student[i].name,name);
 		if(ok==0)
 		{
-			printf("學生:%s 學號:%s 物理(分):%3.1f 數學(分):%3.1 英文(分):%3.1f\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english);
+			tag=1;
+			sum=student[i].physics+student[i].math+student[i].english;
+    		avg=sum/3;
+			printf("學生:%s 學號:%s 物理(分):%3.1f 數學(分):%3.1f  英文(分):%3.1f 平均(分):%3.1f\t\n", student[i].name, student[i].num, student[i].physics, student[i].math, student[i].english,avg);
 		}
 	}
-	if(ok!=0)
+	if(tag==0)
 		printf("資料不存在\n");
 }
 
